@@ -1,0 +1,328 @@
+
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+  body {
+    font-family: "Courier New", monospace;
+    background: #0a0e1a;
+    color: #c8d8e8;
+    min-height: 100vh;
+  }
+  .shell {
+    padding: 1.5rem;
+  }
+  .topbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 1.5rem;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+  .brand {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .brand-logo {
+    width: 38px;
+    height: 38px;
+    border: 1.5px solid #4a9eff;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .brand-text .title {
+    font-size: 15px;
+    font-weight: 700;
+    color: #e8f4ff;
+    letter-spacing: 0.03em;
+  }
+  .brand-text .sub {
+    font-size: 11px;
+    color: #5a8aaa;
+    margin-top: 2px;
+    font-family: var(--font-sans, sans-serif);
+  }
+  .stats {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+    margin-bottom: 1.5rem;
+  }
+  .stat {
+    background: #0f1520;
+    border: 1px solid #1e3050;
+    border-radius: 8px;
+    padding: 12px 14px;
+  }
+  .stat-label {
+    font-size: 10px;
+    color: #5a8aaa;
+    font-family: var(--font-sans, sans-serif);
+    margin-bottom: 4px;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+  }
+  .stat-val {
+    font-size: 24px;
+    font-weight: 700;
+    color: #e8f4ff;
+  }
+  .stat-val.ok {
+    color: #3dd68c;
+  }
+  .stat-val.bad {
+    color: #ff4d6d;
+  }
+  .stat-val.amber {
+    color: #ffb347;
+  }
+  .card {
+    background: #0f1520;
+    border: 1px solid #1e3050;
+    border-radius: 10px;
+    margin-bottom: 1rem;
+    overflow: hidden;
+  }
+  .card-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 11px 16px;
+    border-bottom: 1px solid #1e3050;
+    background: #0c1218;
+  }
+  .card-title {
+    font-size: 12px;
+    color: #7ab4d4;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    font-family: var(--font-sans, sans-serif);
+    font-weight: 500;
+  }
+  .badge {
+    display: inline-block;
+    font-size: 10px;
+    padding: 2px 8px;
+    border-radius: 10px;
+    font-family: var(--font-sans, sans-serif);
+    font-weight: 500;
+  }
+  .badge-green {
+    background: #0d2e1c;
+    color: #3dd68c;
+    border: 1px solid #1a5c38;
+  }
+  .badge-red {
+    background: #2e0d1a;
+    color: #ff4d6d;
+    border: 1px solid #5c1a2e;
+  }
+  .badge-amber {
+    background: #2e1f0d;
+    color: #ffb347;
+    border: 1px solid #5c3e1a;
+  }
+  .badge-blue {
+    background: #0d1e2e;
+    color: #4a9eff;
+    border: 1px solid #1a3e5c;
+  }
+  .form-row {
+    display: grid;
+    grid-template-columns: 140px 160px 1fr auto;
+    gap: 8px;
+    padding: 14px 16px;
+    align-items: end;
+  }
+  .form-group label {
+    font-size: 10px;
+    color: #5a8aaa;
+    display: block;
+    margin-bottom: 4px;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    font-family: var(--font-sans, sans-serif);
+  }
+  select,
+  input[type="text"] {
+    background: #080d14;
+    border: 1px solid #1e3050;
+    border-radius: 6px;
+    color: #c8d8e8;
+    font-size: 12px;
+    padding: 7px 10px;
+    width: 100%;
+    font-family: "Courier New", monospace;
+  }
+  select:focus,
+  input:focus {
+    outline: none;
+    border-color: #4a9eff;
+  }
+  .btn {
+    font-size: 11px;
+    padding: 8px 14px;
+    border-radius: 6px;
+    cursor: pointer;
+    border: none;
+    font-family: var(--font-sans, sans-serif);
+    font-weight: 500;
+    transition: opacity 0.15s;
+  }
+  .btn:hover {
+    opacity: 0.85;
+  }
+  .btn:active {
+    transform: scale(0.97);
+  }
+  .btn-primary {
+    background: #1a4a8a;
+    color: #8ec8ff;
+  }
+  .btn-danger {
+    background: #5c1a2e;
+    color: #ff8aab;
+  }
+  .btn-amber {
+    background: #5c3e1a;
+    color: #ffd09a;
+  }
+  .btn-green {
+    background: #0d3a1e;
+    color: #5ded9e;
+  }
+  .btn-gray {
+    background: #1a2030;
+    color: #7a9ab4;
+  }
+  .action-row {
+    display: flex;
+    gap: 8px;
+    padding: 0 16px 14px;
+    flex-wrap: wrap;
+  }
+  .log-wrap {
+    overflow-x: auto;
+  }
+  .log-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 11px;
+    font-family: "Courier New", monospace;
+  }
+  .log-table th {
+    padding: 8px 12px;
+    background: #0c1218;
+    color: #5a8aaa;
+    text-align: left;
+    border-bottom: 1px solid #1e3050;
+    font-size: 10px;
+    letter-spacing: 0.06em;
+    font-family: var(--font-sans, sans-serif);
+    font-weight: 500;
+  }
+  .log-table td {
+    padding: 9px 12px;
+    border-bottom: 1px solid #111820;
+    color: #c8d8e8;
+    vertical-align: middle;
+  }
+  .log-table tr:last-child td {
+    border-bottom: none;
+  }
+  .log-table tr.tampered {
+    background: #1a0810;
+  }
+  .log-table tr.tampered td {
+    color: #ff8aab;
+  }
+  .chain-ok {
+    color: #3dd68c;
+    font-size: 11px;
+  }
+  .chain-bad {
+    color: #ff4d6d;
+    font-size: 11px;
+  }
+  .hash-val {
+    color: #4a7aaa;
+    font-size: 10px;
+  }
+  .seq-num {
+    color: #4a9eff;
+    font-weight: 700;
+  }
+  .evt {
+    display: inline-block;
+    font-size: 10px;
+    padding: 2px 7px;
+    border-radius: 4px;
+    font-family: var(--font-sans, sans-serif);
+  }
+  .evt-LOGIN {
+    background: #0d1e3a;
+    color: #4a9eff;
+  }
+  .evt-LOGOUT {
+    background: #1a2030;
+    color: #7a9ab4;
+  }
+  .evt-ACCESS {
+    background: #2e1f0d;
+    color: #ffb347;
+  }
+  .evt-TRANSACTION {
+    background: #0d2e1c;
+    color: #3dd68c;
+  }
+  .evt-ERROR {
+    background: #2e0d1a;
+    color: #ff4d6d;
+  }
+  .evt-ADMIN {
+    background: #1e0d2e;
+    color: #c084fc;
+  }
+  .verify-banner {
+    padding: 10px 16px;
+    font-size: 12px;
+    font-weight: 500;
+    font-family: var(--font-sans, sans-serif);
+    border-top: 1px solid #1e3050;
+    display: none;
+  }
+  .verify-ok {
+    background: #0a1f0f;
+    color: #3dd68c;
+  }
+  .verify-fail {
+    background: #1f0a10;
+    color: #ff4d6d;
+  }
+  .empty {
+    padding: 32px;
+    text-align: center;
+    color: #2a4060;
+    font-size: 12px;
+    font-family: var(--font-sans, sans-serif);
+  }
+  .info-strip {
+    font-size: 11px;
+    color: #3a6080;
+    padding: 8px 16px 12px;
+    font-family: var(--font-sans, sans-serif);
+    line-height: 1.5;
+  }
+  @media (max-width: 580px) {
+    .form-row {
+      grid-template-columns: 1fr 1fr;
+    }
+    .stats {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }

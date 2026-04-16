@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+
+</head>
+<body>
+    
+
+<div class="shell">
+  <div class="topbar">
+    <div class="brand">
+      <div class="brand-logo">
+        <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+          <rect
+            x="2"
+            y="2"
+            width="7"
+            height="5"
+            rx="1.5"
+            stroke="#4a9eff"
+            stroke-width="1.2"
+          />
+          <rect
+            x="2"
+            y="10"
+            width="7"
+            height="5"
+            rx="1.5"
+            stroke="#4a9eff"
+            stroke-width="1.2"
+          />
+          <line
+            x1="9"
+            y1="4.5"
+            x2="11"
+            y2="4.5"
+            stroke="#4a9eff"
+            stroke-width="1.2"
+          />
+          <rect
+            x="11"
+            y="2"
+            width="7"
+            height="5"
+            rx="1.5"
+            stroke="#3dd68c"
+            stroke-width="1.2"
+          />
+          <line
+            x1="9"
+            y1="12.5"
+            x2="11"
+            y2="12.5"
+            stroke="#4a9eff"
+            stroke-width="1.2"
+          />
+          <rect
+            x="11"
+            y="10"
+            width="7"
+            height="5"
+            rx="1.5"
+            stroke="#3dd68c"
+            stroke-width="1.2"
+          />
+        </svg>
+      </div>
+      <div class="brand-text">
+        <div class="title">CHAINLOG — Tamper-Evident Audit System</div>
+        <div class="sub">SHA-256 cryptographic hash chain · Web Crypto API</div>
+      </div>
+    </div>
+    <button class="btn btn-green" onclick="verifyChain()">
+      Verify integrity
+    </button>
+  </div>
+
+  <div class="stats">
+    <div class="stat">
+      <div class="stat-label">Total entries</div>
+      <div class="stat-val" id="s-total">0</div>
+    </div>
+    <div class="stat">
+      <div class="stat-label">Chain status</div>
+      <div class="stat-val ok" id="s-status">INTACT</div>
+    </div>
+    <div class="stat">
+      <div class="stat-label">Tampered entries</div>
+      <div class="stat-val" id="s-tampered">0</div>
+    </div>
+    <div class="stat">
+      <div class="stat-label">Last verified</div>
+      <div
+        class="stat-val"
+        id="s-time"
+        style="font-size: 13px; padding-top: 6px"
+      >
+        —
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-header"><span class="card-title">Add log entry</span></div>
+    <div class="form-row">
+      <div class="form-group">
+        <label>Event type</label>
+        <select id="evt-type">
+          <option>LOGIN</option>
+          <option>LOGOUT</option>
+          <option>ACCESS</option>
+          <option>TRANSACTION</option>
+          <option>ERROR</option>
+          <option>ADMIN</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label>User</label>
+        <input type="text" id="evt-user" placeholder="e.g. akash" />
+      </div>
+      <div class="form-group">
+        <label>Description</label>
+        <input
+          type="text"
+          id="evt-desc"
+          placeholder="e.g. Login from 192.168.1.10"
+        />
+      </div>
+      <div class="form-group">
+        <label>&nbsp;</label>
+        <button class="btn btn-primary" onclick="addEntry()">
+          + Add entry
+        </button>
+      </div>
+    </div>
+    <div class="info-strip">
+      Each entry is SHA-256 hashed with the previous entry's hash included. Any
+      alteration cascades as a detectable chain break.
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-header">
+      <span class="card-title">Log chain</span>
+      <div style="display: flex; gap: 8px; align-items: center">
+        <span
+          style="
+            font-size: 10px;
+            color: #3a6080;
+            font-family: var(--font-sans, sans-serif);
+          "
+          >SIMULATE ATTACK:</span
+        >
+        <button class="btn btn-amber" onclick="simulateAlter()">
+          Alter entry
+        </button>
+        <button class="btn btn-danger" onclick="simulateDelete()">
+          Delete entry
+        </button>
+        <button class="btn btn-danger" onclick="simulateReorder()">
+          Reorder entries
+        </button>
+        <button class="btn btn-gray" onclick="resetLog()">Reset</button>
+      </div>
+    </div>
+    <div class="log-wrap">
+      <div class="empty" id="empty-msg">
+        No log entries yet. Add your first entry above.
+      </div>
+      <table class="log-table" id="log-table" style="display: none">
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Timestamp</th>
+            <th>Event</th>
+            <th>User</th>
+            <th>Description</th>
+            <th>Hash (SHA-256)</th>
+            <th>prevHash</th>
+            <th>Chain</th>
+          </tr>
+        </thead>
+        <tbody id="log-tbody"></tbody>
+      </table>
+    </div>
+    <div id="verify-banner" class="verify-banner"></div>
+  </div>
+</div>
+
+
+
+</body>
+ <script src="script.js"></script>
+</html>
